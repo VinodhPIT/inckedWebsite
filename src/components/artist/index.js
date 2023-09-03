@@ -1,13 +1,22 @@
 import React from 'react'
 import Image from 'next/image'
+import {useSelector} from 'react-redux'
+//
 
-function Flash({data}) {
+export default function Artist({data}) {
+
+ 
+
   return (
     <div>
-      <h1>Flash</h1>
+      <h1>Artist</h1>
 
       <div className="image_grid">
-        {data==[] ? <h4>No Data Found </h4> :
+
+
+
+
+    {data.length===0 ? <h4>No Data Found </h4> :
           data.map((item, idx) => {
             if (item._index === "ad") {
               return (
@@ -19,19 +28,26 @@ function Flash({data}) {
               return (
                 <div className="image_item" key={item._id}>
                   <Image
-                    src={item._source.image}
+                  
+                    src={item._source.image_url}
                     layout="fill"
-                    alt={'l;cm;sdcm;lsdcm;sc'}
+                    alt={'test'}
                     objectFit="contain"
                     priority={true}
                     placeholder="blur"
+                    
                     blurDataURL= 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNcLPW/CQAFZAJAYAMfpQAAAABJRU5ErkJggg=='
                        
                   />
                 </div>
               );
             }
-          })}
+          })} 
+
+
+
+
+
       </div>
 
 
@@ -39,25 +55,19 @@ function Flash({data}) {
   )
 }
 
-export default Flash
 
 
 
 
 
-// export async function getServerSideProps(context) {
-//   const res = await fetch(`https://jsonplaceholder.typicode.com/todos/1`)
+// export async function getServerSideProps(contex) {
+//   console.log(contex,"cldsc")
+
+//   // Fetch data from external API
+//   const res = await fetch(`https://jsonplaceholder.typicode.com/posts`)
 //   const data = await res.json()
-//   console.log(data,"cldsmcklsdckmsdlcmklsdcscs")
+//   console.log(data,"dlmcd;mc;ldcldsc;mdc")
  
-//   if (!data) {
-//     console.log("mxl; mxl; x; ",data)
-//     return {
-//       notFound: true,
-//     }
-//   }
- 
-//   return {
-//     props: { data }, // will be passed to the page component as props
-//   }
+//   // Pass data to the page via props
+//   return { props: { data } }
 // }
