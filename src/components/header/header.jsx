@@ -1,84 +1,3 @@
-// import React from "react";
-// import Link from "next/link";
-// import styles from "./header.module.css";
-// import { useRouter } from "next/router";
-
-
-// const Navbar = (props) => {
-//   const links = [
-//     {
-//       id: 2,
-//       title: "Styleguide",
-//       url: "/styleguide",
-//     },
-//     {
-//       id: 3,
-//       title: "Dictionary",
-//       url: "/dictionary",
-//     },
-//     {
-//       id: 4,
-//       title: "For Tattooartists",
-//       url: "/fortattooartists",
-//     },
-//     {
-//       id: 5,
-//       title: "Join Artists",
-//       url: "/joinartist",
-//     },
-//   ];
-//   const { locales, locale, push } = useRouter();
-
-
-
-
-
-//   const handleClicks = (e) => {
-//     push("", undefined, { locale: e });
-//   };
-
-//   return (
-//     <header classNameName="">
-//       <div classNameName={styles.headConatiner}>
-//         <div classNameName={styles.logo}>
-//           <Link href="/" style={{ color: "#fff" }}>
-//             Logo.
-//           </Link>
-//         </div>
-//         <nav classNameName={styles.navmenu}>
-//           <ul classNameName={styles.kk}>
-//             {links.map((link) => (
-//               <li key={link.id}>
-//                 <Link   href={link.url}>{link.title}</Link>
-//               </li>
-//             ))}
-//           </ul>
-//         </nav>
-
-// <div style={{"float":"right","width":"20%"}}>
-
-
-
-//         <select onChange={(event) => handleClicks(event.target.value)}>
-//           <option value={locale}>{locale}</option>
-//           {locales
-//             .filter((e) => e !== locale) // Filter out options with the same value as locale
-//             .map((e) => (
-//               <option      key={e} value={e}>
-//                 {e}
-//               </option>
-//             ))}
-            
-//         </select>
-//         </div>
-
-//       </div>
-//     </header>
-//   );
-// };
-
-// export default Navbar;
-
 
 
 
@@ -86,6 +5,18 @@ import React from 'react'
  import Link from "next/link";
 import { Router } from 'next/router';
  import { useRouter } from "next/router";
+ import { Figtree } from 'next/font/google'
+ const figtree = Figtree({
+     style: ['normal',],
+     weight: ['400', '700','900','600'],
+     subsets: ['latin'],
+   })
+   
+   
+
+
+
+
 export default function Header() {
 
  
@@ -120,8 +51,8 @@ export default function Header() {
   return (
    
 
-      <header  className="header-wrapper" >
-			<div>
+      <header  className="header-wrapper">
+			<div  className={figtree.className} >
 				<div className="container">
 					<nav className="navbar">
 

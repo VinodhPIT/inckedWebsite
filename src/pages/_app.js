@@ -1,7 +1,6 @@
 import "@/styles/globals.css";
 import { appWithTranslation } from 'next-i18next'
-
-import { Poppins } from 'next/font/google'
+import { Figtree } from 'next/font/google'
 import { useRouter } from "next/router";
 import { wrapper } from "@/redux/store";
 import Header from "@/components/header/header";
@@ -10,9 +9,9 @@ import Footer from "@/components/footer/footer";
 
 
 
-const poppins = Poppins({
+const figtree = Figtree({
   style: ['normal',],
-  weight: ['400', '700','900'],
+  weight: ['400', '700','900','600'],
   subsets: ['latin'],
 })
  
@@ -27,7 +26,7 @@ const  App = ({ Component, pageProps }) => {
   return (
    <> 
       {<Header />}
-      <main  className={poppins.className}>
+      <main  className={figtree.className}>
         <Component {...pageProps} />
       </main>
       <Footer />

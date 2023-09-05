@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,900&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,900&display=swap"); */
 /* colors */
 @keyframes alltuchtopdown {
   0% {
@@ -94,7 +94,7 @@ html {
 }
 
 body {
-  font-family: "Figtree", sans-serif;
+  
   color: #000;
   line-height: 17px;
   margin: 0;
@@ -1096,7 +1096,7 @@ ul.download-app li.download-app-title h6 {
 }
 
 .btn-primary {
-  font-family: "Figtree", sans-serif;
+  /* font-family: "Figtree", sans-serif; */
   display: inline-flex;
   height: 40px;
   padding: 10px 20px;
@@ -1121,7 +1121,7 @@ ul.download-app li.download-app-title h6 {
 }
 
 .btn-secondary {
-  font-family: "Figtree", sans-serif;
+  /* font-family: "Figtree", sans-serif; */
   display: inline-flex;
   height: 40px;
   padding: 10px 20px;
@@ -1196,7 +1196,7 @@ ul.download-app li.download-app-title h6 {
 }
 
 .btn-default {
-  font-family: "Figtree", sans-serif;
+  /* font-family: "Figtree", sans-serif; */
   display: inline-flex;
   height: 40px;
   padding: 10px 20px;
@@ -1275,7 +1275,7 @@ ul.download-app li.download-app-title h6 {
 }
 
 .btn-tattoo-art {
-  font-family: "Figtree", sans-serif;
+  /* font-family: "Figtree", sans-serif; */
   display: inline-flex;
   height: 43px;
   padding: 8px 16px;

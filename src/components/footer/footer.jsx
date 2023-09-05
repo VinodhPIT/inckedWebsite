@@ -3,6 +3,14 @@ import React from "react";
 import styles from "./footer.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import { Figtree } from 'next/font/google'
+const figtree = Figtree({
+    style: ['normal',],
+    weight: ['400', '700','900','600'],
+    subsets: ['latin'],
+  })
+   
+
 
 export default function Footer() {
   const bookLinks = [
@@ -71,7 +79,8 @@ export default function Footer() {
   ];
 
   return (
-    <footer class="footer">
+    <footer   className={figtree.className}>
+        <div className="footer">
     <div class="container">
         <section class="footer-block">
             <div class="footer-left">
@@ -455,7 +464,7 @@ return <li key={e.id}> <Link href={e.url} key={e.id}>
         </section>
 
 
-    </div>
+    </div></div>
 </footer>
 
   );
