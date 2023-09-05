@@ -83,41 +83,74 @@
 
 
 import React from 'react'
-
+ import Link from "next/link";
+import { Router } from 'next/router';
+ import { useRouter } from "next/router";
 export default function Header() {
+
+ 
+
+  const links = [
+    {
+      id: 1,
+      title: "Tattoo search",
+      url: "/tattoosearch",
+    },
+    {
+      id: 2,
+      title: "Styleguide",
+      url: "/styleguide",
+    },
+    {
+      id: 3,
+      title: "Dictionary",
+      url: "/dictionary",
+    },
+ 
+    {
+      id: 4,
+      title: "Klarna",
+      url: "/klarna",
+    },
+  
+  ];
+
+
+  const router = useRouter()
   return (
    
 
-      <header className="header-wrapper">
-			<div className="main-header">
+      <header  className="header-wrapper" >
+			<div>
 				<div className="container">
 					<nav className="navbar">
 
 
-						<a className="navbar-brand" >
+						<Link href={'/'} className="navbar-brand" >
 							<img className="logo" src="./inckd-logo.svg" alt=""/>
-						</a>
+						</Link>
 
 
 						<div className="nav-right-block">
-							<ul className="nav main-nav navbar-collapse collapse" id="navbarNavDropdown">
-								<li className="nav-item">
-									<a href="#">Tattoo search</a>
-								</li>
-								<li className="nav-item">
-									<a href="#">Styleguide</a>
-								</li>
-								<li className="nav-item">
-									<a href="#">Dictonary</a>
-								</li>
+							<ul className="nav main-nav navbar-collapse collapse">
 
-                <li className="nav-item">
-									<a href="#">Klarna</a>
-								</li>
+
+                      {links.map((link) => (
+              <li key={link.id} className="nav-item">
+                <Link   href={link.url}>{link.title}</Link>
+              </li>
+            ))}
+
+
 							</ul>
 
+
+
 							<div className="header-right">
-								<button type="button" className="btn btn-tattoo-art navbar-collapse collapse" id="navbarNavDropdown">For Tattoo Artists</button>
+
+
+
+								<button type="button"  onClick={()=>router.push('/fortattooartists')} className="btn btn-tattoo-art navbar-collapse collapse" >For Tattoo Artists</button>
 
 								<button className="navbar-toggler" type="button" data-toggle="collapse"
 									data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
@@ -126,26 +159,10 @@ export default function Header() {
 									<span></span>
 									<span></span>
 								</button>
-								{/* <div className="collapse navbar-collapse" id="navbarNavDropdown">
-									<ul className="nav navbar-nav">
-										<li className="nav-item">
-											<a href="#">Home</a>
-										</li>
-										<li className="nav-item">
-											<a href="#">For Artists</a>
-										</li>
-										<li className="nav-item">
-											<a href="#">Klarna</a>
-										</li>
-										<li className="nav-item">
-											<a href="#">Contact Us</a>
-										</li>
-										<li className="nav-item">
-											<a href="#">FAQ</a>
-										</li>
-									</ul>
-								</div> */}
+					
 							</div>
+
+
 						</div>
 
 					</nav>

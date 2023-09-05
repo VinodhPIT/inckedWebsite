@@ -27,11 +27,21 @@ export default function Home() {
 			<div className="home-banner-wrap">
 				<div className="home-banner-item">
 					<div className="home-banner">
-						<div className="home-banner-inner">							
-							<video autoplay="" muted="" loop="true" playsinline="" className="lazy-video" data-lazy-video="" id="html5_video_bm5obrihxk">
-								<source src="./home-video.mp4" type="video/mp4"/>
-							</video>
+						<div className="home-banner-inner">	
+
+              <video autoplay muted loop  class="lazy-video" data-lazy-video id="html5_video_bm5obrihxk">
+
+
+    <source src="./home-video.mp4" type="video/mp4"/>
+
+
+</video> 
+
+
 						</div>
+
+
+
 					</div>
 					<div className="home-banner-content">
 						<div className="home-banner-content-wrap">

@@ -17,6 +17,12 @@
     transform: rotateX(0deg) translateY(0px);
   }
 }
+
+* {
+  box-sizing: border-box;
+}
+
+
 h1 {
   font-size: 48px;
   font-weight: 400;
@@ -77,9 +83,7 @@ p {
   line-height: 26px;
 }
 
-* {
-  box-sizing: border-box;
-}
+
 
 html {
   min-height: 100%;
@@ -101,6 +105,9 @@ body {
   scroll-behavior: smooth;
   position: relative;
 }
+
+ul li {list-style: none;}
+a{text-decoration: none;}
 
 .container {
   max-width: 100%;
@@ -390,7 +397,7 @@ ul.progressbar li.completed:after {
   align-items: end;
   justify-content: center;
   width: 100%;
-  max-width: 812px;
+  max-width: 902px;
 }
 @media screen and (min-width: 768px) and (max-width: 1300px) {
   .home-banner-content {
@@ -460,7 +467,12 @@ ul.progressbar li.completed:after {
   left: -10px;
   margin-top: 10px;
   background-size: contain;
+  background-image: url('/heading-border.svg');
+  background-repeat: no-repeat;
 }
+
+
+
 @media screen and (max-width: 767px) {
   .highlight-border:after {
     display: none;
@@ -1435,7 +1447,7 @@ header.header-wrapper {
   width: 100%;
   /* margin: 0;
   transition: height 225ms cubic-bezier(0.785, 0.135, 0.15, 0.86); */
-  position: absolute; margin-top: 40px;
+  position: absolute; margin-top: 33px;
   z-index: 1;
 }
 header ul.nav.main-nav {
@@ -1463,7 +1475,7 @@ header ul.nav.main-nav > li > a {
   margin: 0;
 }
 header .header-right {
-  margin-top: 24px;
+  margin-top: 19px; float: right;
 }
 header .header-right button.btn-tattoo-art {
   margin-right: 32px;
@@ -1480,6 +1492,9 @@ header .navbar-collapse.collapse:not(.show) {
 header .navbar {
   width: 100%;
   padding: 0;
+  display: flex;
+  margin-top: 14px;
+
 }
 header .navbar .navbar-collapse {
   display: block !important;
@@ -1546,6 +1561,8 @@ header .navbar-nav > li > a {
   padding: 0;
   margin: 0;
 }
+
+
 header .navbar-nav > li > a:hover {
   color: #F5B6C7;
 }
@@ -1580,12 +1597,16 @@ header .navbar-nav > li:last-child {
   margin-right: 0;
 }
 
+
+
+
 @media screen and (min-width: 992px) {
   header .nav-right-block {
     width: calc(100% - 105px);
-    display: flex;
+   
     margin-right: auto;
     margin-left: 8%;
+    
   }
 }
 @media screen and (min-width: 992px) {
@@ -1605,11 +1626,7 @@ header .navbar-nav > li:last-child {
     display: inline-block;
   }
 }
-@media screen and (min-width: 992px) {
-  header .nav-right-block .header-right {
-    display: flex;
-  }
-}
+
 @media screen and (min-width: 992px) {
   header .nav-right-block .header-right button.btn-tattoo-art {
     display: inline-block !important;
