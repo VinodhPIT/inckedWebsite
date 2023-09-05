@@ -321,7 +321,8 @@ export default function Home() {
 										</div>
 										<div class="text-box-content-inner">											
 											<h2 class="letter-spacing-02">Tattoo now, Pay later</h2>
-											<p>Get tattoo now, pay later. That's right, there's a new way to get tattooed smoooth!</p>	
+                      <p>Get tattoo now, pay later. That&apos;s right, there&apos;s a new way to get tattooed smoooth!</p>
+
 											<a href="#" class="btn btn-secondary btn-xl">Learn more
 												<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="alt-arrow-right">
 													<g id="Linear / Arrows / Alt Arrow Right">
