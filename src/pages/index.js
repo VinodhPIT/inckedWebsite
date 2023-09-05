@@ -1,7 +1,15 @@
 
 import React from 'react'
+import { useEffect, useRef } from 'react';
 
 export default function Home() {
+
+
+  
+
+
+
+
   return (
     <div className="page-wrapper">
 
@@ -29,9 +37,9 @@ export default function Home() {
 					<div className="home-banner">
 						<div className="home-banner-inner">	
 
-            <video  loop   controls  autoPlay>
-								<source src="./home-video.mp4" type="video/mp4"/>
-						</video>
+            <video  loop autoPlay muted>
+         <source src="./home-video.mp4" type="video/mp4" />
+           </video>
 
 						</div>
 
