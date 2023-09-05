@@ -33,7 +33,7 @@ export default function Tattoo({ data }) {
                     src={item._source.image}
                     layout="fill"
                     alt={item.artist_name}
-                    objectFit="contain"
+                    objectFit="cover"
                     placeholder="blur"
                     blurDataURL= 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNcLPW/CQAFZAJAYAMfpQAAAABJRU5ErkJggg=='
                                     

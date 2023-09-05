@@ -464,7 +464,7 @@ export default Search;
 export async function getServerSideProps(context) {
   try {
     if (context.query.category === "all") {
-      console.log("lmcl;dmc;sldcm 000000")
+      
       const results = await fetchMultiData({
         ...Parameters,
         category: context.query.category,
@@ -499,7 +499,7 @@ export async function getServerSideProps(context) {
       };
     }
   } catch (error) {
-    console.log(error,"punda")
+    
     return {
       props: {
         data: null,

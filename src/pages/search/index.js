@@ -8,6 +8,24 @@ import renderCategoryComponent from "@/components/categoryComponent/categoryComp
 import SearchField from "@/components/searchField/index";
 import { useDispatch } from "react-redux";
 import { catgeorySearch } from "@/redux/slices/categorySearch";
+// import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+
+
+// export async function getStaticProps({ locale }) {
+//   return {
+//     props: {
+//       ...(await serverSideTranslations(locale, [
+//         'common',
+//         'footer',
+//       ])),
+
+      
+//       // Will be passed to the page component as props
+//     },
+//   }
+// }
+
+
 
 const Search = ({ data, initialTab, page_no, totalItems, searchKey }) => {
   const [state, setState] = useState({
@@ -284,6 +302,7 @@ const Search = ({ data, initialTab, page_no, totalItems, searchKey }) => {
 export default Search;
 
 export async function getServerSideProps(context) {
+  
   try {
     if (context.query.category === "all") {
       const results = await fetchMultiData({
@@ -298,7 +317,10 @@ export async function getServerSideProps(context) {
           page_no: 0,
           totalItems: results.totalCount,
           searchKey: context.query.term,
+        
         },
+
+       
       };
     } else {
       const data = await fetchCategoryData({
@@ -313,6 +335,7 @@ export async function getServerSideProps(context) {
           page_no: 0,
           totalItems: data.rows.total.value,
         },
+       
       };
     }
   } catch (error) {

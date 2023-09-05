@@ -1,8 +1,22 @@
 import "@/styles/globals.css";
+import { appWithTranslation } from 'next-i18next'
+
+import { Poppins } from 'next/font/google'
 import { useRouter } from "next/router";
 import { wrapper } from "@/redux/store";
 import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer";
+
+
+
+
+const poppins = Poppins({
+  style: ['normal',],
+  weight: ['400', '700','900'],
+  subsets: ['latin'],
+})
+ 
+
 
 const  App = ({ Component, pageProps }) => {
   const router = useRouter();
@@ -11,10 +25,9 @@ const  App = ({ Component, pageProps }) => {
   const shouldHideHeader = hideHeaderRoutes.includes(router.pathname);
 
   return (
-   <>
-      {!shouldHideHeader && <Header />}
-     
-      <main>
+   <> 
+      {<Header />}
+      <main  className={poppins.className}>
         <Component {...pageProps} />
       </main>
       <Footer />
@@ -22,4 +35,4 @@ const  App = ({ Component, pageProps }) => {
   );
 }
 
-export default wrapper.withRedux(App)
+export default  appWithTranslation(wrapper.withRedux(App))

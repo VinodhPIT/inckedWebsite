@@ -28,7 +28,7 @@ export default function Flash({data}) {
                     src={item._source.image}
                     layout="fill"
                     alt={item._id}
-                    objectFit="contain"
+                    objectFit="cover"
                     priority={true}
                     placeholder="blur"
                     blurDataURL= 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNcLPW/CQAFZAJAYAMfpQAAAABJRU5ErkJggg=='

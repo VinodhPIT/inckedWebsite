@@ -111,7 +111,7 @@ const SearchField = (props) => {
             {generateHintsToDisplay.map((result, index) => (
               <button
                 key={index}
-                onClick={() =>[props.onclicks(result), setSearchState({ ...searchState, isDropdownOpen: false })]}
+                
                 style={{
                   display: "block",
                   width: "100%",
@@ -123,8 +123,8 @@ const SearchField = (props) => {
                 {/* <Link
                 href={`/search?term=${result}&category=${"all"}`} */}
 
-                <li
-                // onClick={}
+                <li 
+                onClick={() =>[props.onclicks(result), setSearchState({ ...searchState, isDropdownOpen: false })]}
                   style={{
                     padding: "10px",
                     background: "#eee",
@@ -137,6 +137,10 @@ const SearchField = (props) => {
                   {result}
                 </li>
               </button>
+
+
+
+
             ))}
 
             {/* {generateHintsToDisplay.length===0 ? (

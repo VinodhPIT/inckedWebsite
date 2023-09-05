@@ -32,10 +32,9 @@ export default function Artist({data}) {
                     src={item._source.image_url}
                     layout="fill"
                     alt={'test'}
-                    objectFit="contain"
+                    objectFit="cover"
                     priority={true}
                     placeholder="blur"
-                    
                     blurDataURL= 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNcLPW/CQAFZAJAYAMfpQAAAABJRU5ErkJggg=='
                        
                   />
