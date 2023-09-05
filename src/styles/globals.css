@@ -107,7 +107,7 @@ body {
 }
 
 ul li {list-style: none;}
-a{text-decoration: none;}
+a{text-decoration: none; cursor: pointer;}
 
 .container {
   max-width: 100%;

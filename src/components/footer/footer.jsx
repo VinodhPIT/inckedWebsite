@@ -3,7 +3,10 @@ import React from "react";
 import styles from "./footer.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import {INSTAGRAM_PROFILE_LINK,FACEBOOK_PROFILE_LINK ,LINKEDIN_PROFILE_LINK ,APP_LINK_APPLE ,APP_LINK_GOOGLE} from "@/constants/company";
+
 import { Figtree } from 'next/font/google'
+
 const figtree = Figtree({
     style: ['normal',],
     weight: ['400', '700','900','600'],
@@ -85,16 +88,16 @@ export default function Footer() {
         <section class="footer-block">
             <div class="footer-left">
                 <div class="footer-logo">
-                    <a href="index.html">								
+                    <Link href="/">								
                         <img src="./Inckd-logo-footer-black.svg" class="img-fluid" alt="logo"/>
-                    </a>
+                    </Link>
                 </div>
                 <ul class="footer-list ">
                     <li class="footer-title">
                         <h6>Download app on</h6>
                     </li>
                     <li>
-                        <a href="">
+                        <Link href={APP_LINK_APPLE}>
                             <svg width="135" height="42" viewBox="0 0 135 42" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -179,10 +182,10 @@ export default function Footer() {
                                     d="M119.618 25.8769C119.633 25.2362 119.496 24.6794 119.21 24.2112C118.845 23.61 118.28 23.307 117.525 23.307C116.835 23.307 116.273 23.6026 115.843 24.1915C115.492 24.6597 115.281 25.2214 115.221 25.8769H119.618ZM121.632 26.4386C121.632 26.8279 121.608 27.1532 121.558 27.4217H115.221C115.242 28.3851 115.55 29.1219 116.139 29.6294C116.672 30.0853 117.364 30.3095 118.213 30.3095C119.15 30.3095 120.005 30.1567 120.777 29.8487L121.108 31.3542C120.207 31.7534 119.145 31.9579 117.917 31.9579C116.444 31.9579 115.285 31.5119 114.444 30.6199C113.606 29.7329 113.183 28.5379 113.183 27.0398C113.183 25.5689 113.572 24.3443 114.358 23.3686C115.177 22.3238 116.288 21.804 117.681 21.804C119.051 21.804 120.092 22.3238 120.796 23.3686C121.356 24.1964 121.632 25.2214 121.632 26.4386Z"
                                     fill="white" />
                             </svg>
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href="">
+                        <Link href={APP_LINK_GOOGLE}>
                             <svg width="135" height="41" viewBox="0 0 135 41" fill="none"
                                 xmlns="http://www.w3.org/2000/svg" >
                                 <mask id="mask0_8333_9641" style={{ maskType: 'luminance' }}
@@ -345,7 +348,7 @@ export default function Footer() {
                                         
                                 </defs>
                             </svg>
-                        </a>
+                        </Link>
                     </li>
                 </ul>
             </div>
@@ -411,7 +414,7 @@ return <li key={e.id}> <Link href={e.url} key={e.id}>
                 <ul>
                     <li class="footer-title">Follow us on</li>
                     <li>
-                        <a href="">
+                        <Link href={INSTAGRAM_PROFILE_LINK} target="_blank" > 
                             <svg width="25" height="24" viewBox="0 0 25 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -427,10 +430,10 @@ return <li key={e.id}> <Link href={e.url} key={e.id}>
                                     d="M15.5151 19.0342H9.90091C7.56986 19.0342 5.67383 17.1382 5.67383 14.8071V9.19291C5.67383 6.86185 7.56986 4.96582 9.90091 4.96582H15.5151C17.8462 4.96582 19.7422 6.86185 19.7422 9.19291V14.8071C19.7422 17.1382 17.8462 19.0342 15.5151 19.0342ZM9.90091 6.2873C8.30037 6.2873 6.99531 7.59236 6.99531 9.19291V14.8071C6.99531 16.4077 8.30037 17.7127 9.90091 17.7127H15.5151C17.1157 17.7127 18.4208 16.4077 18.4208 14.8071V9.19291C18.4208 7.59236 17.1157 6.2873 15.5151 6.2873H9.90091Z"
                                     fill="#0D0D0D" />
                             </svg>
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href="">
+                        <Link href={FACEBOOK_PROFILE_LINK} target="_blank">
                             <svg width="25" height="24" viewBox="0 0 25 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -440,10 +443,10 @@ return <li key={e.id}> <Link href={e.url} key={e.id}>
                                     d="M17.3784 15.8659L17.9119 12.394H14.5795V10.145C14.5795 9.19286 15.0473 8.27357 16.533 8.27357H18.0432V5.31872C18.0432 5.31872 16.6725 5.08069 15.3592 5.08069C12.6178 5.08069 10.8285 6.73869 10.8285 9.751V12.394H7.78333V15.8659H10.8285V24H14.5795V15.8659H17.3784Z"
                                     fill="#0D0D0D" />
                             </svg>
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href="">
+                        <Link href={LINKEDIN_PROFILE_LINK} target="_blank">
                             <svg width="25" height="24" viewBox="0 0 25 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -456,7 +459,7 @@ return <li key={e.id}> <Link href={e.url} key={e.id}>
                                     d="M11.4523 9.7674H13.6767V10.7852H13.7095C14.0214 10.1942 14.7765 9.57861 15.9092 9.57861C18.2567 9.57861 18.6917 11.1217 18.6917 13.1326V17.2284H16.3689V13.6005C16.3689 12.7305 16.3524 11.6224 15.1623 11.6224C13.9721 11.6224 13.7669 12.5663 13.7669 13.543V17.2366H11.4441V9.7674H11.4523Z"
                                     fill="#0D0D0D" />
                             </svg>
-                        </a>
+                        </Link>
                     </li>
                 </ul>
             </div>

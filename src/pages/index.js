@@ -1,6 +1,10 @@
 
 import React from 'react'
 import { useEffect, useRef } from 'react';
+import Image from 'next/image'
+import Link from 'next/link'
+import {APP_LINK_APPLE ,APP_LINK_GOOGLE} from "@/constants/company";
+
 
 export default function Home() {
 
@@ -116,7 +120,7 @@ export default function Home() {
 									<h6>Download our app from</h6>
 								</li>
 								<li>
-									<a href="#">
+									<Link href={APP_LINK_APPLE}>
 										<svg width="135" height="42" viewBox="0 0 135 42" fill="none" xmlns="http://www.w3.org/2000/svg">
 											<path d="M129.356 39.9509H5.55247C3.04353 39.9509 1.01042 37.8664 1.01042 35.2941V5.22411C1.01042 2.65176 3.04353 0.567261 5.55247 0.567261H129.356C131.865 0.567261 133.898 2.65176 133.898 5.22411V35.2941C133.898 37.8664 131.865 39.9509 129.356 39.9509Z" fill="black"></path>
 											<mask id="mask0_8333_9708" style={{ maskType: 'luminance' }} maskUnits="userSpaceOnUse" x="0" y="0" width="135" height="42">
@@ -150,10 +154,10 @@ export default function Home() {
 											<path d="M112.185 23.9303C111.976 23.8909 111.755 23.8712 111.52 23.8712C110.777 23.8712 110.2 24.1595 109.796 24.7336C109.446 25.2436 109.27 25.8842 109.27 26.6579V31.7755H107.158L107.175 25.0958C107.175 23.9698 107.148 22.9472 107.098 22.0232H108.939L109.015 23.8909H109.071C109.294 23.2503 109.647 22.7329 110.128 22.346C110.599 21.9986 111.109 21.8237 111.657 21.8237C111.851 21.8237 112.029 21.8385 112.185 21.8631" fill="white"></path>
 											<path d="M119.618 25.8769C119.633 25.2362 119.496 24.6794 119.21 24.2112C118.845 23.61 118.28 23.307 117.525 23.307C116.835 23.307 116.273 23.6026 115.843 24.1915C115.492 24.6597 115.281 25.2214 115.221 25.8769H119.618ZM121.632 26.4386C121.632 26.8279 121.608 27.1532 121.558 27.4217H115.221C115.242 28.3851 115.55 29.1219 116.139 29.6294C116.672 30.0853 117.364 30.3095 118.213 30.3095C119.15 30.3095 120.005 30.1567 120.777 29.8487L121.108 31.3542C120.207 31.7534 119.145 31.9579 117.917 31.9579C116.444 31.9579 115.285 31.5119 114.444 30.6199C113.606 29.7329 113.183 28.5379 113.183 27.0398C113.183 25.5689 113.572 24.3443 114.358 23.3686C115.177 22.3238 116.288 21.804 117.681 21.804C119.051 21.804 120.092 22.3238 120.796 23.3686C121.356 24.1964 121.632 25.2214 121.632 26.4386Z" fill="white"></path>
 										</svg>
-									</a>
+									</Link>
 								</li>
 								<li>
-									<a href="#">
+									<Link href={APP_LINK_GOOGLE}>
 										<svg width="135" height="41" viewBox="0 0 135 41" fill="none" xmlns="http://www.w3.org/2000/svg" >
 											<mask id="mask0_8333_9641" style={{ maskType: 'luminance' }} maskUnits="userSpaceOnUse" x="0" y="0" width="135" height="41">
 												<path d="M0.748199 0.690491H134.251V40.9587H0.748199V0.690491Z" fill="white"></path>
@@ -249,7 +253,7 @@ export default function Home() {
 												<image id="image2_8333_9641" width="269" height="207"/>
 											</defs>
 										</svg>
-									</a>
+									</Link>
 								</li>
 							</ul>
 						</div>
@@ -365,7 +369,7 @@ export default function Home() {
 										</div>
 									</div>									
 									<div class="img-box-wrap">										
-										<img src="./pitched_please_a_full_screen_book_page_of_an_old_book_the_book__7ecdb77e-8cc3-45f8-a9a7-7d2ac111ad3e-40.png" alt=""/>
+										<img src="./pitched_please.png" alt=""/>
 									</div>
 								</div>
 							</div>
@@ -377,7 +381,20 @@ export default function Home() {
 										<div class="box-text-img-over-yellow md-max-75">
 											<h2 class="letter-spacing-025"><span class="small">My Style is </span>Lettering</h2>
 										</div>
-										<img src="./pexels-ademola.png" alt=""/>
+
+										<Image
+      src="/pexels-ademola.png"
+      alt="pexels-ademola"
+      width={600}
+      height={730}
+
+	  
+	
+    />
+
+									 {/* <img src="./pexels-ademola.png" alt="" />  */}
+
+
 									</div>
 									<div class="text-box-content">
 										<div class="bg-overlay-img">											
@@ -409,7 +426,7 @@ export default function Home() {
 													<h6>Download the App & Explore more!</h6>
 												</li>
 												<li>
-													<a href="#">
+													<Link href={APP_LINK_APPLE}>
 														<svg width="135" height="42" viewBox="0 0 135 42" fill="none" xmlns="http://www.w3.org/2000/svg">
 															<path d="M129.356 39.9509H5.55247C3.04353 39.9509 1.01042 37.8664 1.01042 35.2941V5.22411C1.01042 2.65176 3.04353 0.567261 5.55247 0.567261H129.356C131.865 0.567261 133.898 2.65176 133.898 5.22411V35.2941C133.898 37.8664 131.865 39.9509 129.356 39.9509Z" fill="black"></path>
 															<mask id="mask0_8333_9708"style={{ maskType: 'luminance' }}maskUnits="userSpaceOnUse" x="0" y="0" width="135" height="42">
@@ -443,10 +460,10 @@ export default function Home() {
 															<path d="M112.185 23.9303C111.976 23.8909 111.755 23.8712 111.52 23.8712C110.777 23.8712 110.2 24.1595 109.796 24.7336C109.446 25.2436 109.27 25.8842 109.27 26.6579V31.7755H107.158L107.175 25.0958C107.175 23.9698 107.148 22.9472 107.098 22.0232H108.939L109.015 23.8909H109.071C109.294 23.2503 109.647 22.7329 110.128 22.346C110.599 21.9986 111.109 21.8237 111.657 21.8237C111.851 21.8237 112.029 21.8385 112.185 21.8631" fill="white"></path>
 															<path d="M119.618 25.8769C119.633 25.2362 119.496 24.6794 119.21 24.2112C118.845 23.61 118.28 23.307 117.525 23.307C116.835 23.307 116.273 23.6026 115.843 24.1915C115.492 24.6597 115.281 25.2214 115.221 25.8769H119.618ZM121.632 26.4386C121.632 26.8279 121.608 27.1532 121.558 27.4217H115.221C115.242 28.3851 115.55 29.1219 116.139 29.6294C116.672 30.0853 117.364 30.3095 118.213 30.3095C119.15 30.3095 120.005 30.1567 120.777 29.8487L121.108 31.3542C120.207 31.7534 119.145 31.9579 117.917 31.9579C116.444 31.9579 115.285 31.5119 114.444 30.6199C113.606 29.7329 113.183 28.5379 113.183 27.0398C113.183 25.5689 113.572 24.3443 114.358 23.3686C115.177 22.3238 116.288 21.804 117.681 21.804C119.051 21.804 120.092 22.3238 120.796 23.3686C121.356 24.1964 121.632 25.2214 121.632 26.4386Z" fill="white"></path>
 														</svg>
-													</a>
+													</Link>
 												</li>
 												<li>
-													<a href="#">
+													<Link href={APP_LINK_GOOGLE}>
 														<svg width="135" height="41" viewBox="0 0 135 41" fill="none" xmlns="http://www.w3.org/2000/svg">
 															<mask id="mask0_8333_9641"style={{ maskType: 'luminance' }}maskUnits="userSpaceOnUse" x="0" y="0" width="135" height="41">
 																<path d="M0.748199 0.690491H134.251V40.9587H0.748199V0.690491Z" fill="white"></path>
@@ -542,14 +559,30 @@ export default function Home() {
 																<image id="image2_8333_9641" width="269" height="207" />
 															</defs>
 														</svg>
-													</a>
+													</Link>
 												</li>
 											</ul>
 										</div>
 									</div>
 									
 									<div class="img-box-wrap">
-										<img src="./img-mobile-new.png" alt=""/>
+
+
+									<Image
+      src="/img-mobile-new.png"
+      width={400}
+      height={640}
+      alt="Picture of the author"
+	
+    />
+
+										{/* <img src="./img-mobile-new.png" alt=""/> */}
+
+
+
+
+
+
 									</div>
 								</div>
 							</div>	
