@@ -13,8 +13,13 @@ export default function Home() {
 		</div>
 		<div className="header-cookie-txt">
 			<p>
-				<span>Get tattoo now, pay later. <span className="header-cookie-mob">That's right, there's a new way to get tattooed smoooth!</span><a href="#" >Learn more</a></span>
-			</p>			
+      <span>
+  Get tattoo now, pay later.{' '}
+  <span className="header-cookie-mob">
+    That&apos;s right, there&apos;s a new way to get tattooed smoooth!
+  </span>
+  <a href="#">Learn more</a>
+</span>			</p>			
 		</div>
 	</div>
 
