@@ -1,288 +1,218 @@
-import React, { useState, useEffect, Suspense, useRef } from "react";
-import {
-  fetchCategoryData,
-  getStyles,
-  queryDataFetcher,
-  fetchMultiData,
-} from "@/pages/action/action";
+import React, { useState, useEffect } from "react";
 import Head from "next/head";
-import Image from "next/image";
-import { debounce } from "lodash";
-
+import { fetchCategoryData, getStyles, fetchMultiData } from "@/action/action";
+import { debounce, stubTrue } from "lodash";
 import Autocomplete from "react-google-autocomplete";
-
-const Tattoo = React.lazy(() => import("@/pages/tattoo/index"));
-const Artist = React.lazy(() => import("@/pages/artist/index"));
-const Flash = React.lazy(() => import("@/pages/flash/index"));
-const All = React.lazy(() => import("@/pages/all/page"));
-
-const Search = ({ data, initialTab, pageNo }) => {
-  // const { dispatch } = InckState();
-  const [selectedValue, setSelectedValue] = useState(""); // Initialize with default value
-  const [category, setCategory] = useState(data);
-  const [tab, setTab] = useState(initialTab);
-  const [load, setload] = useState(false);
-  const [styles, setStyles] = useState([]);
-  const [message, setMessage] = useState(false);
-  const [pageNumber, setPage] = useState(0);
-  const searchInputRef = useRef(null);
+import { Parameters, tabs } from "@/components/parameters/params";
+import renderCategoryComponent from "@/components/categoryComponent/categoryComponent";
+import SearchField from "@/components/searchField/index";
+import { useDispatch } from "react-redux";
+import { catgeorySearch } from "@/redux/slices/categorySearch";
+// import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 
-  const hintsToDisplay = [];
+// export async function getStaticProps({ locale }) {
+//   return {
+//     props: {
+//       ...(await serverSideTranslations(locale, [
+//         'common',
+//         'footer',
+//       ])),
 
-  const [isDropdownOpen, setDropdownOpen] = useState(false);
+      
+//       // Will be passed to the page component as props
+//     },
+//   }
+// }
 
-  // State to store the suggestions fetched from the API
-  const [hint, setHints] = useState([]);
 
-  // State to track the current value of the search input
-  const [value, setValue] = useState("");
 
-  // State to store the filtered search results based on user input
-  const [searchResults, setSearchResults] = useState([]);
-
-  const handleFocus = () => {
-    setDropdownOpen(true);
-    setHints([]);
-  };
-
-  const handleClickOutside = (event) => {
-    if (
-      searchInputRef.current &&
-      !searchInputRef.current.contains(event.target)
-    ) {
-      setDropdownOpen(false);
-    }
-    setSearchResults([]);
-    setValue("");
-  };
-
-  const getHints = async () => {
-    try {
-      const responseTattoos = await queryDataFetcher(tab, value);
-      const results = responseTattoos.rows.hits;
-      setHints(results);
-    } catch (error) {
-      console.error("Error fetching hints:", error);
-    }
-  };
-
-  // useEffect(() => {
-  //   getHints(); // Calls getHints() to fetch suggestions based on the current value
-  // }, [value]);
-
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside); // Listen for clicks outside the input
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside); // Remove event listener on unmount
-    };
-  }, []);
-
-  // Debounced event handler for search input changes
-  const handleChange = debounce((event) => {
-    setValue(event);
-
-    // Filter hints to match the user input and update search results
-    const filteredResults = hintsToDisplay.filter((item) =>
-      item.toLowerCase().includes(event.toLowerCase())
-    );
-
-    if (filteredResults.length === 0) {
-      setMessage(true);
-    } else {
-      setMessage(false);
-    }
-
-    setSearchResults(filteredResults);
-  }, 500);
-
-  hint.forEach((el) => {
-    if (el._index === "artist") {
-      const artist = el;
-      artist._source.artist_name &&
-      !hintsToDisplay.includes(artist._source.artist_name)
-        ? hintsToDisplay.push(artist._source.artist_name)
-        : null;
-      artist._source.first_name &&
-      !hintsToDisplay.includes(artist._source.first_name)
-        ? hintsToDisplay.push(artist._source.first_name)
-        : null;
-      artist._source.last_name &&
-      !hintsToDisplay.includes(artist._source.last_name)
-        ? hintsToDisplay.push(artist._source.last_name)
-        : null;
-    } else if (el._index === "tattoo") {
-      const tattoo = el;
-      tattoo._source.name_suggest &&
-        tattoo._source.name_suggest.forEach((nameSuggest) => {
-          if (hintsToDisplay.includes(nameSuggest)) {
-            return;
-          }
-          hintsToDisplay.push(nameSuggest);
-        });
-    }
+const Search = ({ data, initialTab, page_no, totalItems, searchKey }) => {
+  const [state, setState] = useState({
+    categoryCollection: data,
+    tab: initialTab,
+    changeTab: false,
+    count: page_no,
+    selectedStyle: "",
+    styleCollection: [],
+    totalItems,
+    searchKey,
+    value: "",
+    hints: [],
+    loader: false,
+    errorMessage: false,
+    isChange: false,
+    loading:false
   });
+
+  const dispatch = useDispatch();
 
   async function fetchStyles() {
     try {
       const newData = await getStyles();
-      setStyles(newData.rows.hits);
-      console.log(newData.rows.hits,"dccl, ,cl ")
+      setState((prevState) => ({
+        ...prevState,
+        styleCollection: newData.rows.hits,
+      }));
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   }
-
   useEffect(() => {
     fetchStyles();
   }, []);
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    router.push(`/search?term=${value}&category=${"all"}`);
+  function handleTabClick(categoryName) {
+    setState((prevState) => ({
+      ...prevState,
+      tab: categoryName,
+      categoryCollection: [],
+      changeTab: true,
+      count: 0,
+      searchKey: "",
+      isChange: false,
+    }));
   }
 
-  function renderCategoryComponent(tab) {
-    switch (tab) {
-      case "all":
-        return (
-          <React.Suspense
-            fallback={<div style={{ color: "red" }}>Loading Tattoo...</div>}
-          >
-            <All data={category} />
-          </React.Suspense>
-        );
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
 
-      case "tattoo":
-        return (
-          <React.Suspense
-            fallback={<div style={{ color: "red" }}>Loading Tattoo...</div>}
-          >
-            <Tattoo data={category} />
-          </React.Suspense>
-        );
-      case "artist":
-        return (
-          <React.Suspense fallback={<div>Loading Artist...</div>}>
-            <Artist data={category} />
-          </React.Suspense>
-        );
-      case "flash":
-        return (
-          <React.Suspense
-            fallback={
-              <div style={{ color: "red", fontSize: "1122px" }}>
-                Loading Flash...
-              </div>
-            }
-          >
-            <Flash data={category} />
-          </React.Suspense>
-        );
-      default:
-        return null;
-    }
-  }
+        setState((prevState) => ({
+          ...prevState,
+        loading:true
+        }));
 
-  async function handleTabClick(category) {
-    setCategory([]);
-    setTab(category);
+        const requestData = {
+          ...Parameters,
+          category: state.tab,
+          page_no: state.count,
+          style: state.selectedStyle,
+          search_key: state.searchKey,
+        };
+        let responseData;
+        if (state.tab === "all") {
+          responseData = await fetchMultiData(requestData);
+        } else {
+          responseData = await fetchCategoryData(requestData);
+        }
 
-    if (category !== "all") {
-      const newData = await fetchCategoryData(
-        category,
-        0,
-        selectedValue
-      );
-      setCategory(newData.rows.hits);
-    } else {
-      const newData = await fetchMultiData(0, selectedValue);
-      setCategory(newData.data);
-    }
-    setPage(0);
-  }
+        if (state.isChange === true) {
+          setState((prevState) => ({
+            ...prevState,
+            hints:
+              state.tab === "all" ? responseData.data : responseData.rows.hits,
+          }));
+        } else {
+          setState((prevState) => ({
+            ...prevState,
+            errorMessage: false,
+            categoryCollection:
+              state.count === 0
+                ? state.tab === "all"
+                  ? responseData.data
+                  : responseData.rows.hits
+                : [
+                    ...prevState.categoryCollection,
+                    ...(state.tab === "all"
+                      ? responseData.data
+                      : responseData.rows.hits),
+                  ],
+            totalItems:
+              state.tab === "all"
+                ? responseData.totalCount
+                : responseData.rows.total.value,
+            changeTab: false,
 
-  const handleSelectChange = async (event) => {
-   
-    setSelectedValue(event.target.value);
-    if (tab !== "all") {
-      const newData = await fetchCategoryData(tab, 0, event.target.value);
-      setCategory(newData.rows.hits);
-    } else {
-      const newData = await fetchMultiData(0,event.target.value);
-      setCategory(newData.data);
-    }
-    setPage(0)
-  };
+            totalItems:
+              state.tab === "all"
+                ? responseData.totalCount
+                : responseData.rows.total.value,
+            changeTab: false,
+            loading:false
+          }));
+        }
+      } catch (error) {
+        // Handle errors here
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [
+    state.changeTab,
+    state.count,
+    state.selectedStyle,
+    state.searchKey,
+    state.value,
+    state.tab,
+  ]);
 
   const handlePlaceSelected = async (place) => {
-    let ui = place.geometry.location.lat();
-    let yu = place.geometry.location.lng();
-
-    const newData = await fetchCategoryData(tab, selectedValue, ui, yu);
-
-    setCategory(newData.rows.hits);
-
-    // Call your custom function here
+    // ------  Search Artist  Based on Location ------ //
+    const { lat, lng } = place.geometry.location;
+    try {
+      const e = await fetchCategoryData({
+        ...Parameters,
+        latitude: lat(),
+        longitude: lng(),
+        category: state.tab,
+        page_no: state.count,
+      });
+      setState((prevState) => ({
+        ...prevState,
+        categoryCollection: e.rows.hits,
+        changeTab: false,
+        totalItems: e.rows.total.value,
+      }));
+    } catch (error) {
+      console.error(error);
+    }
   };
 
+  const handleChange = debounce((event) => {
+    setState((prevState) => ({
+      ...prevState,
+      searchKey: event,
+      value: event,
+      isChange: true,
 
-  const handleButtonClick = async () => {
-     // Increment the page number first
-    try {
-      const newData = await fetchCategoryData(tab, pageNumber + 1); // Use the updated page number
-      setCategory(prevData => [...prevData, ...newData.rows.hits]); // Merge new data with the previous state
-      setPage(pageNumber + 1);
+      // searchKey:event
+    }));
+  }, 100);
 
-    } catch (error) {
-      console.error('Error loading more data:', error);
-    }
+  const handleSubmits = () => {
+    setState((prevState) => ({
+      ...prevState,
+      value: state.value,
+      // searchKey:event
+    }));
+  };
+
+  const onclicks = (e) => {
+    setState((prevState) => ({
+      ...prevState,
+      searchKey: e,
+      count: 0,
+      isChange: false,
+      value: e,
+    }));
   };
 
   return (
     <>
       <Head>
-        <title>My title</title>
-        <meta name="description" content="hi vijodh"></meta>
+        <title>Inckd Search Page</title>
+        <meta name="description" content="Search Me"></meta>
       </Head>
 
-      <div className="search-input-container">
-        <form onSubmit={handleSubmit}>
-          <input
-            type="search"
-            className="search-input"
-            ref={searchInputRef}
-            onFocus={handleFocus}
-            placeholder="Search..."
-            style={{ padding: "14px", borderRadius: "40px", width: "100%" }}
-            onChange={(e) => handleChange(e.target.value)}
-          />
-        </form>
-
-        {isDropdownOpen && (
-          <div className="search">
-            {searchResults.length === 0 && null}
-            {searchResults.map((result, index) => (
-              <li key={index}>{result}</li>
-            ))}
-
-            {message ? (
-              <h4> We couldnt find any results for --- {value}</h4>
-            ) : (
-              " "
-            )}
-
-            {searchResults.length === 0 ? (
-              <div>
-                <p>Get inspired by styles</p>
-                <div className="styleTattoo"></div>
-              </div>
-            ) : (
-              " "
-            )}
-          </div>
-        )}
-      </div>
+      <SearchField
+        handleChange={handleChange}
+        hints={state.hints}
+        onclicks={onclicks}
+        handleSubmits={handleSubmits}
+        value={state.value}
+      />
 
       <div
         style={{
@@ -300,66 +230,71 @@ const Search = ({ data, initialTab, pageNo }) => {
             justifyContent: "space-around",
           }}
         >
-          <button
-            disabled={tab === "all" ? true : false}
-            onClick={() => handleTabClick("all")}
-          >
-            All
-          </button>
-          <button
-            disabled={tab === "tattoo" ? true : false}
-            onClick={() => handleTabClick("tattoo")}
-          >
-            Tattoo
-          </button>
-          <button
-            disabled={tab === "flash" ? true : false}
-            onClick={() => handleTabClick("flash")}
-          >
-            Flash
-          </button>
-          <button
-            disabled={tab === "artist" ? true : false}
-            onClick={() => handleTabClick("artist")}
-          >
-            Artist
-          </button>
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              disabled={state.tab === tab.id}
+              onClick={() => handleTabClick(tab.id)}
+            >
+              {tab.label}
+            </button>
+          ))}
         </div>
         <div class="custom-select" style={{ width: "200px" }}>
-          <select onChange={handleSelectChange}>
-            {selectedValue == "" ? <option value="0">Choose Style</option> : ""}
-            {styles.map((e) => {
-              return (
-                <option key={e._id} value={e._id}>
-                  {e.sort[0]}
-                </option>
-              );
-            })}
+          <select
+            onChange={(event) =>
+              setState((prevState) => ({
+                ...prevState,
+                selectedStyle: event.target.value,
+                count: 0,
+                isChange: false,
+              }))
+            }
+            value={state.selectedStyle}
+          >
+            <option value="0">Choose Style</option>
+            {state.styleCollection.map((el) => (
+              <option key={el._id} value={el._id}>
+                {el.sort[0]}
+              </option>
+            ))}
           </select>
         </div>
 
-        {tab === "artist" ? (
+        {state.tab === "artist" && (
           <Autocomplete
             apiKey={process.env.googlePlacesApiKey}
             onPlaceSelected={handlePlaceSelected}
           />
-        ) : null}
+        )}
       </div>
 
-      {renderCategoryComponent(tab)}
-    
+      {renderCategoryComponent(state.tab, state.categoryCollection ,state.loading)}
 
-      <button onClick={handleButtonClick} style={{
-    'background': '#000',
-    'border-radius':'30px',
-    'padding': '10px',
-    'color': '#fff',
-    'margin': '0 auto',
-    'width': '200px',
-    'display': 'flex',
-      }}>Load more</button>
-
-    
+      {state.categoryCollection.length !== 0 &&
+        state.categoryCollection.length !== state.totalItems && (
+          <div>
+            <p>
+              See out of {state.categoryCollection.length}/{state.totalItems}
+            </p>
+            <button
+              onClick={() => {
+                setState((prevState) => ({
+                  ...prevState,
+                  count: prevState.count + 1, // Increment the count by 1
+                }));
+              }}
+              style={{
+                padding: "10px",
+                margin: "0 auto",
+                width: "200px",
+                display: "flex",
+              }}
+            >
+              Load more
+            </button>
+          </div>
+        )}
     </>
   );
 };
@@ -367,24 +302,40 @@ const Search = ({ data, initialTab, pageNo }) => {
 export default Search;
 
 export async function getServerSideProps(context) {
+  
   try {
     if (context.query.category === "all") {
-      const results = await fetchMultiData();
+      const results = await fetchMultiData({
+        ...Parameters,
+        category: context.query.category,
+      });
 
       return {
         props: {
           data: results.data,
           initialTab: context.query.category,
+          page_no: 0,
+          totalItems: results.totalCount,
+          searchKey: context.query.term,
+        
         },
+
+       
       };
     } else {
-      const data = await fetchCategoryData(context.query.category);
+      const data = await fetchCategoryData({
+        ...Parameters,
+        category: context.query.category,
+      });
 
       return {
         props: {
           data: data.rows.hits,
           initialTab: context.query.category,
+          page_no: 0,
+          totalItems: data.rows.total.value,
         },
+       
       };
     }
   } catch (error) {
