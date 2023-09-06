@@ -120,7 +120,7 @@ export default function Home() {
 									<h6>Download our app from</h6>
 								</li>
 								<li>
-									<Link href={APP_LINK_APPLE}>
+									<Link href={APP_LINK_APPLE} target="_blank">
 										<svg width="135" height="42" viewBox="0 0 135 42" fill="none" xmlns="http://www.w3.org/2000/svg">
 											<path d="M129.356 39.9509H5.55247C3.04353 39.9509 1.01042 37.8664 1.01042 35.2941V5.22411C1.01042 2.65176 3.04353 0.567261 5.55247 0.567261H129.356C131.865 0.567261 133.898 2.65176 133.898 5.22411V35.2941C133.898 37.8664 131.865 39.9509 129.356 39.9509Z" fill="black"></path>
 											<mask id="mask0_8333_9708" style={{ maskType: 'luminance' }} maskUnits="userSpaceOnUse" x="0" y="0" width="135" height="42">
@@ -157,7 +157,7 @@ export default function Home() {
 									</Link>
 								</li>
 								<li>
-									<Link href={APP_LINK_GOOGLE}>
+									<Link href={APP_LINK_GOOGLE} target="_blank">
 										<svg width="135" height="41" viewBox="0 0 135 41" fill="none" xmlns="http://www.w3.org/2000/svg" >
 											<mask id="mask0_8333_9641" style={{ maskType: 'luminance' }} maskUnits="userSpaceOnUse" x="0" y="0" width="135" height="41">
 												<path d="M0.748199 0.690491H134.251V40.9587H0.748199V0.690491Z" fill="white"></path>
@@ -426,7 +426,7 @@ export default function Home() {
 													<h6>Download the App & Explore more!</h6>
 												</li>
 												<li>
-													<Link href={APP_LINK_APPLE}>
+													<Link href={APP_LINK_APPLE} target="_blank">
 														<svg width="135" height="42" viewBox="0 0 135 42" fill="none" xmlns="http://www.w3.org/2000/svg">
 															<path d="M129.356 39.9509H5.55247C3.04353 39.9509 1.01042 37.8664 1.01042 35.2941V5.22411C1.01042 2.65176 3.04353 0.567261 5.55247 0.567261H129.356C131.865 0.567261 133.898 2.65176 133.898 5.22411V35.2941C133.898 37.8664 131.865 39.9509 129.356 39.9509Z" fill="black"></path>
 															<mask id="mask0_8333_9708"style={{ maskType: 'luminance' }}maskUnits="userSpaceOnUse" x="0" y="0" width="135" height="42">
@@ -463,7 +463,7 @@ export default function Home() {
 													</Link>
 												</li>
 												<li>
-													<Link href={APP_LINK_GOOGLE}>
+													<Link href={APP_LINK_GOOGLE} target="_blank">
 														<svg width="135" height="41" viewBox="0 0 135 41" fill="none" xmlns="http://www.w3.org/2000/svg">
 															<mask id="mask0_8333_9641"style={{ maskType: 'luminance' }}maskUnits="userSpaceOnUse" x="0" y="0" width="135" height="41">
 																<path d="M0.748199 0.690491H134.251V40.9587H0.748199V0.690491Z" fill="white"></path>
@@ -573,7 +573,8 @@ export default function Home() {
       width={400}
       height={640}
       alt="Picture of the author"
-	
+	  placeholder="blur"
+	  blurDataURL="/img-mobile.png"
     />
 
 										{/* <img src="./img-mobile-new.png" alt=""/> */}
