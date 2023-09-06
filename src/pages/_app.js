@@ -24,8 +24,8 @@ const  App = ({ Component, pageProps }) => {
   const shouldHideHeader = hideHeaderRoutes.includes(router.pathname);
 
   return (
-   <> 
-      {<Header />}
+   < > 
+      { shouldHideHeader ? null :<Header />}
       <main  className={figtree.className}>
         <Component {...pageProps} />
       </main>

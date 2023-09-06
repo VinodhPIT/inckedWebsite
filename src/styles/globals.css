@@ -130,6 +130,20 @@ body.theme-dark {
   background-color: #0D0D0D;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .banner-block {
   width: 100%;
   margin-top: -67px;
@@ -2050,3 +2064,56 @@ body.theme-dark footer .foot-links ul.links li a:hover {
   color: #fff;
   text-decoration: underline;
 }
+
+
+
+
+
+
+
+
+.image_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+  grid-gap: 7px; padding: 10px 0px 10px 0px;
+}
+
+
+.styleTattoo {
+
+  display: grid;
+  grid-template-columns: repeat(2, 2fr); /* Display two columns of equal width */
+
+  grid-gap: 7px; padding: 10px 0px 10px 0px; padding: 30px;
+}
+
+
+.styleTattoo1{
+  border: 1px solid #ddd;
+  padding: 8px; position: relative; width: 160px; height: 208px;border-radius:8px; position: relative;
+}
+
+
+.image_item {
+  border: 1px solid #ddd;
+  padding: 8px; position: relative;   height: 208px;border-radius:8px;
+}
+
+
+.search {
+
+  width: 98%;
+  margin: 10px auto;
+  padding: "20px";
+  overflow-y: scroll;
+  height: 300px;
+  position: absolute;
+  top: 39px;
+  background: #c4c4c4;; z-index: 99999;
+
+  left: 0;
+  right: 0; border-radius: 10px;    padding: 10px;
+
+}
+
+.search-input-container{position: relative;}
