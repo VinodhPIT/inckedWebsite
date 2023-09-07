@@ -8,7 +8,7 @@ import {
   APP_LINK_APPLE,
   APP_LINK_GOOGLE,
   mobileBlur,
-  boxImage,
+  blurImage,
 } from "@/constants/company";
 
 export default function StyleGuide() {
@@ -521,7 +521,7 @@ export default function StyleGuide() {
                       width={600}
                       height={730}
                       placeholder="blur"
-                      blurDataURL={boxImage}
+                      blurDataURL={blurImage}
                       layout="responsive"
                     />
 
@@ -590,7 +590,7 @@ export default function StyleGuide() {
                       width={600}
                       height={730}
                       placeholder="blur"
-                      blurDataURL={boxImage}
+                      blurDataURL={blurImage}
                       layout="responsive"
                     />
 
@@ -1098,7 +1098,7 @@ export default function StyleGuide() {
                       width={600}
                       height={730}
                       placeholder="blur"
-                      blurDataURL={boxImage}
+                      blurDataURL={blurImage}
                       layout="responsive"
                     />
 
@@ -1145,7 +1145,7 @@ export default function StyleGuide() {
                       width={600}
                       height={730}
                       placeholder="blur"
-                      blurDataURL={boxImage}
+                      blurDataURL={blurImage}
                      layout="responsive"
                     />
 

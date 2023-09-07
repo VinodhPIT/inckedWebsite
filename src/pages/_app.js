@@ -1,4 +1,6 @@
 import "@/styles/globals.css";
+
+
 import { appWithTranslation } from 'next-i18next'
 import { Figtree } from 'next/font/google'
 import { useRouter } from "next/router";

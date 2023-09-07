@@ -1,22 +1,10 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,900&display=swap"); */
-/* colors */
-@keyframes alltuchtopdown {
-  0% {
-    -webkit-transform: rotateX(0deg) translateY(0px);
-    -ms-transform: rotateX(0deg) translateY(0px);
-    transform: rotateX(0deg) translateY(0px);
-  }
-  50% {
-    -webkit-transform: rotateX(0deg) translateY(-10px);
-    -ms-transform: rotateX(0deg) translateY(-10px);
-    transform: rotateX(0deg) translateY(-10px);
-  }
-  100% {
-    -webkit-transform: rotateX(0deg) translateY(0px);
-    -ms-transform: rotateX(0deg) translateY(0px);
-    transform: rotateX(0deg) translateY(0px);
-  }
+ 
+
+ :root {
+  --size:60px;
+  --color:red
 }
+
 
 * {
   box-sizing: border-box;

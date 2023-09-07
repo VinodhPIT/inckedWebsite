@@ -5,7 +5,8 @@ import React from "react";
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { APP_LINK_APPLE, APP_LINK_GOOGLE ,boxImage, mobileBlur} from "@/constants/company";
+import { APP_LINK_APPLE, APP_LINK_GOOGLE ,blurImage, mobileBlur} from "@/constants/company";
+import styles from "@/styles/Home.module.css";
 
 
 
@@ -721,7 +722,7 @@ export default function Home() {
         width={500}
         height={800}
 		placeholder="blur"
-		blurDataURL={boxImage}
+		blurDataURL={blurImage}
 		layout="responsive"
 		
         
@@ -944,7 +945,7 @@ export default function Home() {
                       width={600}
                        height={730}
                       placeholder="blur"
-                       blurDataURL={boxImage}
+                       blurDataURL={blurImage}
 					   layout="responsive"
                     />
 
@@ -1474,6 +1475,8 @@ export default function Home() {
 					  blurDataURL={mobileBlur}
 					  layout="responsive"
                     />
+
+                   
                   </div>
                 </div>
               </div>
