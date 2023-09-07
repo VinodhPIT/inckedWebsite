@@ -133,17 +133,6 @@ body.theme-dark {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 .banner-block {
   width: 100%;
   margin-top: -67px;
@@ -413,6 +402,12 @@ ul.progressbar li.completed:after {
   width: 100%;
   max-width: 902px;
 }
+
+.commonBannersec{
+
+  align-items: center;
+
+}
 @media screen and (min-width: 768px) and (max-width: 1300px) {
   .home-banner-content {
     max-width: 750px;
@@ -446,7 +441,7 @@ ul.progressbar li.completed:after {
   }
 }
 .home-banner-caption h1 {
-  color: #C0FFD5;
+
   text-align: center;
   font-size: 112px;
   font-weight: 700;
@@ -681,6 +676,12 @@ ul.download-app li.download-app-title h6 {
   padding: 0;
   letter-spacing: -3.2px;
 }
+
+.textCenter{text-align: center;}
+
+
+
+
 @media screen and (min-width: 768px) and (max-width: 1300px) {
   .text-box-wrap .img-text-box-inner .text-box-content h2 {
     font-size: 55px;
@@ -852,7 +853,7 @@ ul.download-app li.download-app-title h6 {
   margin: 0 0 25px 0;
   padding: 0;
   letter-spacing: -3.2px;
-  color: #FFF4C0;
+  
 }
 @media screen and (min-width: 768px) and (max-width: 1300px) {
   .box-text-img-over-yellow h2 {
@@ -892,6 +893,20 @@ ul.download-app li.download-app-title h6 {
   background-color: #FFF4C0;
 }
 
+.block-bg-orange {
+  background-color: #FFD5C0;
+}
+.block-bg-light-green{
+  background-color: #EAFFC0;
+}
+
+.block-bg-dark-green{
+  background-color: #C0FFD5;
+}
+
+
+
+
 .block-bg-black {
   background-color: #222222;
 }
@@ -905,6 +920,25 @@ ul.download-app li.download-app-title h6 {
 .block-bg-orange {
   background-color: #FFD5C0;
 }
+.coloryellow{
+  color: #FFF4C0;
+}
+.colorOrange{
+  color: #FFD5C0;
+}
+
+.colorgreen{
+  color: #EAFFC0;
+}
+
+.colorpalegreen{
+  color: #C0FFD5;
+}
+
+
+
+
+
 
 .md-max-75 {
   max-width: 75%;
@@ -968,9 +1002,14 @@ ul.download-app li.download-app-title h6 {
     width: 100%;
   }
 }
+
+
 .text-box-wrap.app-download-box-wrap .img-text-box-inner .img-box-wrap img {
   margin-bottom: -20%;
 }
+
+
+
 .text-box-wrap.app-download-box-wrap .img-text-box-inner ul.download-app {
   max-width: 360px;
   text-align: left;
@@ -2024,6 +2063,12 @@ header .navbar-nav > li:last-child {
     float: left;
   }
 }
+
+
+
+
+
+
 
 body.theme-dark footer {
   background: #0D0D0D;

@@ -1,25 +1,15 @@
+
+//
+
 import React from "react";
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { APP_LINK_APPLE, APP_LINK_GOOGLE } from "@/constants/company";
-
-
+import { APP_LINK_APPLE, APP_LINK_GOOGLE ,boxImage, mobileBlur} from "@/constants/company";
 
 
 
 export default function Home() {
-
-
-
-
-
-
-
-
-
-
-
   return (
     <div className="page-wrapper">
       <div className="header-cookies">
@@ -53,6 +43,9 @@ export default function Home() {
         </div>
       </div>
 
+
+	  
+
       <div className="home-banner-block">
         <div className="home-banner-wrap">
           <div className="home-banner-item">
@@ -66,7 +59,7 @@ export default function Home() {
             <div className="home-banner-content">
               <div className="home-banner-content-wrap">
                 <div className="home-banner-caption">
-                  <h1>
+                  <h1 className="colorpalegreen">
                     <span>
                       Book your dream{" "}
                       <span className="highlight-border">tattoo</span> now!
@@ -719,7 +712,28 @@ export default function Home() {
                         />
                       </svg>
                     </div>
-                    <img src="./pexels-djordje-petrovic-1433270-3.png" alt="" />
+
+
+					<Image
+					priority
+        src="/pexels-djordje-petrovic-1433270-3.png"
+        alt="Picture of the author"
+        width={500}
+        height={800}
+		placeholder="blur"
+		blurDataURL={boxImage}
+		layout="responsive"
+		
+        
+      />
+
+
+                     {/* <img src="./pexels-djordje-petrovic-1433270-3.png" alt="" />  */}
+
+
+
+
+
                   </div>
                 </div>
               </div>
@@ -918,16 +932,20 @@ export default function Home() {
                 <div class="img-text-box-inner">
                   <div class="img-box-wrap block-bg-gradient-1">
                     <div class="box-text-img-over-yellow md-max-75">
-                      <h2 class="letter-spacing-025">
+                      <h2 class="letter-spacing-025 coloryellow">
                         <span class="small">My Style is </span>Lettering
                       </h2>
                     </div>
 
                     <Image
+					  priority={true}
                       src="/pexels-ademola.png"
                       alt="pexels-ademola"
                       width={600}
-                      height={730}
+                       height={730}
+                      placeholder="blur"
+                       blurDataURL={boxImage}
+					   layout="responsive"
                     />
 
                     {/* <img src="./pexels-ademola.png" alt="" />  */}
@@ -1447,13 +1465,15 @@ export default function Home() {
 
                   <div class="img-box-wrap">
                     <Image
+					  priority={true}
                       src="/img-mobile-new.png"
                       width={400}
                       height={640}
                       alt="Picture of the author"
+					  placeholder="blur"
+					  blurDataURL={mobileBlur}
+					  layout="responsive"
                     />
-
-                    {/* <img src="./img-mobile-new.png" alt=""/>  */}
                   </div>
                 </div>
               </div>
