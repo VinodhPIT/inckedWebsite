@@ -1069,12 +1069,13 @@ export default function StyleGuide() {
                   <div class="mobileImg ">
                     <Image
                     priority
-                      src="/Frame 1686561574 (1).png"
+                      src="/Frame 1686561574.png"
                       width={800}
                       height={640}
                       alt="Picture of the author"
                       placeholder="blur"
                       blurDataURL={mobileBlur}
+                      layout="responsive"
                     />
 
                     {/* <img src="./img-mobile-new.png" alt=""/>  */}
@@ -1145,7 +1146,7 @@ export default function StyleGuide() {
                       height={730}
                       placeholder="blur"
                       blurDataURL={boxImage}
-                      layout="responsive"
+                     layout="responsive"
                     />
 
                     {/* <img src="./pexels-ademola.png" alt="" />  */}

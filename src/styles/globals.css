@@ -663,6 +663,8 @@ ul.download-app li.download-app-title h6 {
 .text-box-wrap .img-text-box-inner {
   display: flex;
 }
+
+.mobileImg{width: 50%;}
 @media screen and (max-width: 767px) {
   .text-box-wrap .img-text-box-inner {
     flex-direction: column;
