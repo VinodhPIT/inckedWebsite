@@ -1,7 +1,7 @@
 .headConatiner{padding: 30px;
 float: left;
 width: 100%;
-background: #000}
+background:red}
 
 .navmenu  ul li {    display: inline-block;
     margin: 0px 10px 0px 10px;
@@ -13,7 +13,7 @@ background: #000}
     display: block;}
 
     .navmenu {
-    float: right
+    float: right;width: 40%;
     }
 
     .navmenu  ul li a {color: #fff;padding:10px ;display: block; }
