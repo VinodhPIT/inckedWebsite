@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^1.9.5",
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.19",
     "formik": "^2.4.3",
@@ -18,8 +17,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-google-autocomplete": "^2.7.3",
-    "react-redux": "^8.1.2",
-    "react-tabs": "^6.0.2",
+    "uuidv4": "^6.2.13",
     "yup": "^1.2.0"
   }
 }

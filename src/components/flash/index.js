@@ -1,13 +1,18 @@
 import React from 'react'
 import Image from 'next/image'
 
-function Flash({data}) {
+//
+export default function Flash({data}) {
+
+
+
+
   return (
     <div>
       <h1>Flash</h1>
-
       <div className="image_grid">
-        {data==[] ? <h4>No Data Found </h4> :
+     {
+       data.length===0 ? <h4>No Data Found </h4> :
           data.map((item, idx) => {
             if (item._index === "ad") {
               return (
@@ -21,7 +26,7 @@ function Flash({data}) {
                   <Image
                     src={item._source.image}
                     layout="fill"
-                    alt={'l;cm;sdcm;lsdcm;sc'}
+                    alt={item._id}
                     objectFit="contain"
                     priority={true}
                     placeholder="blur"
@@ -31,7 +36,7 @@ function Flash({data}) {
                 </div>
               );
             }
-          })}
+          })} 
       </div>
 
 
@@ -39,25 +44,6 @@ function Flash({data}) {
   )
 }
 
-export default Flash
 
 
 
-
-
-// export async function getServerSideProps(context) {
-//   const res = await fetch(`https://jsonplaceholder.typicode.com/todos/1`)
-//   const data = await res.json()
-//   console.log(data,"cldsmcklsdckmsdlcmklsdcscs")
- 
-//   if (!data) {
-//     console.log("mxl; mxl; x; ",data)
-//     return {
-//       notFound: true,
-//     }
-//   }
- 
-//   return {
-//     props: { data }, // will be passed to the page component as props
-//   }
-// }
